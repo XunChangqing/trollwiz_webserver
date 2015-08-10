@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Operation:</strong>
+  <%= @domain_update_log.operation %>
+</p>
+
+<p>
+  <strong>Domain name:</strong>
+  <%= @domain_update_log.domain_name %>
+</p>
+
+<%= link_to 'Edit', edit_domain_update_log_path(@domain_update_log) %> |
+<%= link_to 'Back', domain_update_logs_path %>

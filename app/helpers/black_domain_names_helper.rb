@@ -1,0 +1,2 @@
+module BlackDomainNamesHelper
+end

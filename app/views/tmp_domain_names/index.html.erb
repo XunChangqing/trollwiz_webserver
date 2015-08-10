@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tmp Domain Names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Domain name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tmp_domain_names.each do |tmp_domain_name| %>
+      <tr>
+        <td><%= tmp_domain_name.domain_name %></td>
+        <td><%= link_to 'Show', tmp_domain_name %></td>
+        <td><%= link_to 'Edit', edit_tmp_domain_name_path(tmp_domain_name) %></td>
+        <td><%= link_to 'Destroy', tmp_domain_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tmp domain name', new_tmp_domain_name_path %>
