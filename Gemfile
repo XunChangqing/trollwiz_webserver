@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'public_suffix'
-gem 'passenger'
 
 
 # Use ActiveModel has_secure_password
