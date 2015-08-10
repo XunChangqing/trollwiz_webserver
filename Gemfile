@@ -25,8 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'public_suffix'
 
-gem 'capistrano-rails', :group => :development
-gem 'capistrano-passenger', :group => :development
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
