@@ -46,7 +46,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'capistrano-rails'
-  gem 'capistrano-passenger'
   #extras
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
