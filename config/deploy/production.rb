@@ -59,7 +59,7 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-server '121.40.144.14',
+server '112.126.80.28',
   user: 'mythxcq',
   roles: %w{web db app},
   ssh_options: {
