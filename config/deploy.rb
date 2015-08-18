@@ -1,6 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+require 'capistrano/rvm'
+
 set :application, 'trollwiz_webserver'
 set :repo_url, 'https://github.com/XunChangqing/trollwiz_webserver.git'
 
