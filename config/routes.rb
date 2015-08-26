@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   scope "/domain_admin" do
+    resources :wechat_users
     resources :black_domain_names
     resources :white_domain_names
     resources :tmp_domain_names
     resources :domain_update_logs
     post 'tmp_domain_names_create' => 'tmp_domain_names#create_domain_name'
-  end
+    end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

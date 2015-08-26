@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @wechat_user.uuid %>
+</p>
+
+<p>
+  <strong>Access token:</strong>
+  <%= @wechat_user.access_token %>
+</p>
+
+<p>
+  <strong>Openid:</strong>
+  <%= @wechat_user.openid %>
+</p>
+
+<p>
+  <strong>Nick name:</strong>
+  <%= @wechat_user.nick_name %>
+</p>
+
+<%= link_to 'Edit', edit_wechat_user_path(@wechat_user) %> |
+<%= link_to 'Back', wechat_users_path %>
