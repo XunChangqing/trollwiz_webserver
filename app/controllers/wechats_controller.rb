@@ -19,11 +19,6 @@ class WechatsController < ApplicationController
     end
   end
 
-  # 当收到 EventKey 为 mykey 的事件时
-  on :event, with: "mykey" do |request, key|
-    request.reply.text "收到来自#{request[:FromUserName]} 的EventKey 为 #{key} 的事件"
-  end
-
   # 处理图片信息
   on :image do |request|
     request.reply.image(request[:MediaId]) #直接将图片返回给用户
@@ -47,12 +42,27 @@ class WechatsController < ApplicationController
 
   # 当用户加关注
   on :event, with: 'subscribe' do |request, key|
-    request.reply.text "#{request[:FromUserName]} #{key} now"
+    #request.reply.text "#{request[:FromUserName]} #{request[:EventKey].match(/qrscene_(.*)/i)[1]} now"
+    Rails.logger.info request[:FromUserName]
+    Rails.logger.info request[:EventKey]
+    ret = "#{request[:FromUserName]}"
+    Rails.logger.info ret
+    if(request[:EventKey]) do
+      ret = ret + request[:EventKey].match(/qrscene_(.*)/i)[1]
+    end
+    Rails.logger.info ret
+    request.reply.text ret
+#.to_i
   end
 
   # 当用户取消关注订阅
   on :event, with: 'unsubscribe' do |request, key|
     request.reply.text "#{request[:FromUserName]}无法收到这条消息。"
+  end
+
+  # 当收到 EventKey 为 mykey 的事件时
+  on :event, with: "scan" do |request, key|
+    request.reply.text "收到来自#{request[:FromUserName]} 的scan事件 #{request[:EventKey]} "
   end
 
   # 当无任何responder处理用户信息时,使用这个responder处理
