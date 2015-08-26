@@ -43,14 +43,16 @@ class WechatsController < ApplicationController
   # 当用户加关注
   on :event, with: 'subscribe' do |request, key|
     #request.reply.text "#{request[:FromUserName]} #{request[:EventKey].match(/qrscene_(.*)/i)[1]} now"
-    Rails.logger.info request[:FromUserName]
-    Rails.logger.info request[:EventKey]
+    #Rails.logger.info request[:FromUserName]
+    #Rails.logger.info request[:EventKey]
     ret = "#{request[:FromUserName]}"
-    Rails.logger.info ret
-    if(request[:EventKey]) do
-      ret = ret + request[:EventKey].match(/qrscene_(.*)/i)[1]
+    begin
+      sceneid = request[:EventKey].match(/qrscene_(.*)/i)[1].to_i
+      @wechat_user = WechatUser.find_by_id(sceneid)
+      @wechat_user.openid = request[:FromUserName]
+      @wechat_user.save
+    rescue => err
     end
-    Rails.logger.info ret
     request.reply.text ret
 #.to_i
   end
@@ -62,6 +64,13 @@ class WechatsController < ApplicationController
 
   # 当收到 EventKey 为 mykey 的事件时
   on :event, with: "scan" do |request, key|
+    begin
+      sceneid = request[:EventKey].to_i
+      @wechat_user = WechatUser.find_by_id(sceneid)
+      @wechat_user.openid = request[:FromUserName]
+      @wechat_user.save
+    rescue => err
+    end
     request.reply.text "收到来自#{request[:FromUserName]} 的scan事件 #{request[:EventKey]} "
   end
 
