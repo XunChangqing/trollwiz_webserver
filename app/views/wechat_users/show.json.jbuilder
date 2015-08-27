@@ -1,1 +1,1 @@
-json.extract! @wechat_user, :id, :uuid, :access_token, :openid, :nick_name, :created_at, :updated_at
+json.extract! @wechat_user, :id, :uuid, :openid, :nick_name, :created_at, :updated_at

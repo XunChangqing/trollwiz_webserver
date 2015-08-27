@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope "/domain_admin" do
     resource :wechat, only:[:show, :create]
+    get 'access_token' => "wechat_users#access_token"
+    post 'create_user' => "wechat_users#create_user"
     resources :wechat_users
     resources :black_domain_names
     resources :white_domain_names

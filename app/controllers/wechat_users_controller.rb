@@ -1,6 +1,18 @@
 class WechatUsersController < ApplicationController
   before_action :set_wechat_user, only: [:show, :edit, :update, :destroy]
 
+  def access_token
+    rettoken = {access_token: Wechat.api.access_token.token}
+    render json: rettoken
+  end
+  def create_user
+    Rails.logger.info params
+    @wechat_user = WechatUser.new
+    @wechat_user.uuid = params[:uuid]
+    @wechat_user.save
+    retinfo = {access_token: Wechat.api.access_token.token, scene_id: @wechat_user.id}
+    render json: retinfo
+  end
   # GET /wechat_users
   # GET /wechat_users.json
   def index
@@ -25,7 +37,6 @@ class WechatUsersController < ApplicationController
   # POST /wechat_users.json
   def create
     @wechat_user = WechatUser.new(wechat_user_params)
-    @wechat_user.access_token = Wechat.api.access_token.token
 
     respond_to do |format|
       if @wechat_user.save
@@ -70,6 +81,6 @@ class WechatUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wechat_user_params
-      params.require(:wechat_user).permit(:uuid, :access_token, :openid, :nick_name)
+      params.require(:wechat_user).permit(:uuid, :openid, :nick_name)
     end
 end
