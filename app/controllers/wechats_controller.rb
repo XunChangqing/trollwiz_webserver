@@ -53,7 +53,7 @@ class WechatsController < ApplicationController
       @wechat_user.save
     rescue => err
     end
-    request.reply.text ret
+    request.reply.text "收到来自#{request[:FromUserName]} 的subcribe事件 #{request[:EventKey]} "
 #.to_i
   end
 
