@@ -37,20 +37,6 @@ class TmpDomainNamesController < ApplicationController
     end
   end
   
-  def create_domain_name
-    @tmp_domain_name = TmpDomainName.new(params.permit(:domain_name))
-
-    respond_to do |format|
-      if @tmp_domain_name.save
-        format.html { redirect_to @tmp_domain_name, notice: 'Tmp domain name was successfully created.' }
-        format.json { render :show, status: :created, location: @tmp_domain_name }
-      else
-        format.html { render :new }
-        format.json { render json: @tmp_domain_name.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # PATCH/PUT /tmp_domain_names/1
   # PATCH/PUT /tmp_domain_names/1.json
   def update

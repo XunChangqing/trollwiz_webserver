@@ -1,20 +1,27 @@
 Rails.application.routes.draw do
+  #domain_name apis
+  post 'domain_names/update_logs'
+  post 'domain_names/submit_tmp_domain_name'
+
+  #wechat apis
+  post 'wechat_apis/access_token'
+  post 'wechat_apis/create_scene'
+  post 'wechat_apis/scene_info'
+
+  #wechat responder
+  resource :wechat, only:[:show, :create]
+
   scope "/domain_admin" do
-    resource :wechat, only:[:show, :create]
-    get 'access_token' => "wechat_users#access_token"
-    post 'create_user' => "wechat_users#create_user"
-    resources :wechat_users
     resources :black_domain_names
     resources :white_domain_names
     resources :tmp_domain_names
     resources :domain_update_logs
-    post 'tmp_domain_names_create' => 'tmp_domain_names#create_domain_name'
     end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'white_domain_names#index'
+  #root 'white_domain_names#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

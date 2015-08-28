@@ -4,16 +4,7 @@ class DomainUpdateLogsController < ApplicationController
   # GET /domain_update_logs
   # GET /domain_update_logs.json
   def index
-   #@condition = [] 
-   #@condition[0]= "created_at>" + params[:start_at] if params[:start_at] 
-   #@domain_update_logs = DomainUpdateLog.where @condition
-   #@user_logs = UserLog.where @condition
-   if params[:start_id]
-     @domain_update_logs = DomainUpdateLog.where('id>?', params[:start_id])
-   else
-     @domain_update_logs = DomainUpdateLog.all
-   end
-
+    @domain_update_logs = DomainUpdateLog.all
   end
 
   # GET /domain_update_logs/1

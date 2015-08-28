@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150827013818) do
+ActiveRecord::Schema.define(version: 20150828084935) do
 
   create_table "black_domain_names", force: :cascade do |t|
     t.string   "domain_name"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20150827013818) do
   end
 
   add_index "tmp_domain_names", ["domain_name"], name: "index_tmp_domain_names_on_domain_name", unique: true
+
+  create_table "wechat_scenes", force: :cascade do |t|
+    t.string   "openid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "wechat_users", force: :cascade do |t|
     t.string   "uuid"
