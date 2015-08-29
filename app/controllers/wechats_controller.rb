@@ -48,9 +48,9 @@ class WechatsController < ApplicationController
     ret = "#{request[:FromUserName]}"
     begin
       sceneid = request[:EventKey].match(/qrscene_(.*)/i)[1].to_i
-      @wechat_user = WechatUser.find_by_id(sceneid)
-      @wechat_user.openid = request[:FromUserName]
-      @wechat_user.save
+      @wechat_scene = WechatScene.find_by_id(sceneid)
+      @wechat_scene.openid = request[:FromUserName]
+      @wechat_scene.save
     rescue => err
     end
     request.reply.text "收到来自#{request[:FromUserName]} 的subcribe事件 #{request[:EventKey]} "
@@ -66,9 +66,9 @@ class WechatsController < ApplicationController
   on :event, with: "scan" do |request, key|
     begin
       sceneid = request[:EventKey].to_i
-      @wechat_user = WechatUser.find_by_id(sceneid)
-      @wechat_user.openid = request[:FromUserName]
-      @wechat_user.save
+      @wechat_scene = WechatScene.find_by_id(sceneid)
+      @wechat_scene.openid = request[:FromUserName]
+      @wechat_scene.save
     rescue => err
     end
     request.reply.text "收到来自#{request[:FromUserName]} 的scan事件 #{request[:EventKey]} "
