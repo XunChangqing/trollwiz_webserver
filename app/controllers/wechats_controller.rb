@@ -45,15 +45,18 @@ class WechatsController < ApplicationController
     #request.reply.text "#{request[:FromUserName]} #{request[:EventKey].match(/qrscene_(.*)/i)[1]} now"
     #Rails.logger.info request[:FromUserName]
     #Rails.logger.info request[:EventKey]
-    ret = "#{request[:FromUserName]}"
+    #ret = "#{request[:FromUserName]}"
+    ret = ""
     begin
       sceneid = request[:EventKey].match(/qrscene_(.*)/i)[1].to_i
       @wechat_scene = WechatScene.find_by_id(sceneid)
       @wechat_scene.openid = request[:FromUserName]
       @wechat_scene.save
+      ret = "扫码成功!"
     rescue => err
     end
-    request.reply.text "收到来自#{request[:FromUserName]} 的subcribe事件 #{request[:EventKey]} "
+    #request.reply.text "收到来自#{request[:FromUserName]} 的subcribe事件 #{request[:EventKey]} "
+    request.reply.text ret + "山妖卫士感谢您的关注！"
 #.to_i
   end
 
@@ -71,7 +74,8 @@ class WechatsController < ApplicationController
       @wechat_scene.save
     rescue => err
     end
-    request.reply.text "收到来自#{request[:FromUserName]} 的scan事件 #{request[:EventKey]} "
+    #request.reply.text "收到来自#{request[:FromUserName]} 的scan事件 #{request[:EventKey]} "
+    request.reply.text "扫码成功！"
   end
 
   # 当无任何responder处理用户信息时,使用这个responder处理
