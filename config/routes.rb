@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount WeixinRailsMiddleware::Engine, at: "/"
   #domain_name apis
   post 'domain_names/update_logs'
   post 'domain_names/submit_tmp_domain_name'
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   post 'wechat_apis/scene_info'
 
   #wechat responder
-  resource :wechat, only:[:show, :create]
+  #resource :wechat, only:[:show, :create]
 
   scope "/domain_admin" do
     resources :black_domain_names

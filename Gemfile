@@ -27,7 +27,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'public_suffix'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "wechat", git:"https://github.com/Eric-Guo/wechat"
+#gem "wechat", git:"https://github.com/Eric-Guo/wechat"
+gem 'redis-namespace'
+gem 'weixin_authorize', git: "https://github.com/lanrion/weixin_authorize.git"
+gem 'weixin_rails_middleware'
+#, '~> 1.3.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
