@@ -25,6 +25,8 @@ class WechatApisController < ApplicationController
     @wechat_user = WechatUser.find_by_openid params[:openid]
     @auth_info = AuthInfo.find_by_wechat_user_id @wechat_user.id
     render json: @auth_info
+    @auth_info.used = true
+    @auth_info.save
   end
 
   def binding
