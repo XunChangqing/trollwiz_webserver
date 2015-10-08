@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   post 'wechat_apis/access_token'
   post 'wechat_apis/create_scene'
   post 'wechat_apis/scene_info'
+  post 'wechat_apis/get_user_info'
+  post 'wechat_apis/get_auth_info'
+  get 'wechat_apis/binding'
+  get 'wechat_apis/auth'
 
   #wechat responder
   #resource :wechat, only:[:show, :create]

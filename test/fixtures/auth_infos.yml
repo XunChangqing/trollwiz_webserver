@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wechat_user_id: 
+  used: false
+
+two:
+  wechat_user_id: 
+  used: false
