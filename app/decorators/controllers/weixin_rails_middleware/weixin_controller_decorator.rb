@@ -93,8 +93,12 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         @wechat_scene = WechatScene.find_by_id(sceneid)
         @wechat_scene.openid = @weixin_message.FromUserName
         @wechat_scene.save
-        #ret = "扫码成功!"
-        reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
+        @user = WechatUser.find_by_openid @weixin_message.FromUserName
+        if @user not nil and @user.openid != ''
+          reply_text_message("绑定成功!")
+        else
+          reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
+        end
       rescue => err
         reply_text_message("扫码失败")
       end
