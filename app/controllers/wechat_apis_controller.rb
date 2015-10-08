@@ -1,4 +1,5 @@
 class WechatApisController < ApplicationController
+  before_action :validate_wechat_client
   before_action :validate_token, except: [:binding, :auth]
   def access_token
     #render json: {access_token: Wechat.api.access_token.token}
@@ -73,5 +74,9 @@ def validate_token
   if params[:token] != Rails.application.config.trollwiz['token']
     render json: {"error":"invalid token"}
   end
+end
+
+def validate_wechat_client
+  $trollwiz_wechat_client.is_valid?
 end
 end
