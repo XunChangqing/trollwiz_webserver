@@ -94,7 +94,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         @wechat_scene.openid = @weixin_message.FromUserName
         @wechat_scene.save
         @user = WechatUser.find_by_openid @weixin_message.FromUserName
-        if @user not nil and @user.openid != ''
+        if @user != nil and @user.openid != ''
           reply_text_message("绑定成功!")
         else
           reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
