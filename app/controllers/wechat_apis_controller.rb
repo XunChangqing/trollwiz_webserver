@@ -1,5 +1,5 @@
 class WechatApisController < ApplicationController
-  before_action :validate_wechat_client
+  before_action :validate_wechat_client, except: [:error_report]
   before_action :validate_token, except: [:binding, :auth]
   def access_token
     #render json: {access_token: Wechat.api.access_token.token}
@@ -48,6 +48,16 @@ class WechatApisController < ApplicationController
     end
   end
 
+  def error_report
+    @error_report = ErrorReport.new
+    @error_report.version = params[:version]
+    @error_report.error_message = params[:errmsg]
+    if @error_report.save
+      render json: {error: 0}
+    else
+      render json: {error: 1}
+    end
+  end
 
 private
 def wechat_auth

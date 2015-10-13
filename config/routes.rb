@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post 'wechat_apis/scene_info'
   post 'wechat_apis/get_user_info'
   post 'wechat_apis/get_auth_info'
+  post 'wechat_apis/error_report'
   get 'wechat_apis/binding'
   get 'wechat_apis/auth'
 

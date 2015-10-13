@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008014700) do
+ActiveRecord::Schema.define(version: 20151013031707) do
 
   create_table "auth_infos", force: :cascade do |t|
     t.integer  "wechat_user_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20151008014700) do
     t.string   "domain_name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "error_reports", force: :cascade do |t|
+    t.string   "version"
+    t.string   "error_message"
+    t.boolean  "closed"
+    t.text     "note"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "tmp_domain_names", force: :cascade do |t|

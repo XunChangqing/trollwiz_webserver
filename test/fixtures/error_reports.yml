@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  version: MyString
+  error_message: MyString
+  closed: false
+  note: MyText
+
+two:
+  version: MyString
+  error_message: MyString
+  closed: false
+  note: MyText
