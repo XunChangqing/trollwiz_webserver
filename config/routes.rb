@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   #wechat responder
   #resource :wechat, only:[:show, :create]
 
-  scope "/domain_admin" do
+  scope "/admin" do
     resources :black_domain_names
     resources :white_domain_names
     resources :tmp_domain_names
     resources :domain_update_logs
+    resources :error_reports
     end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

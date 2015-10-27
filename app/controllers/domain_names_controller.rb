@@ -1,4 +1,6 @@
 class DomainNamesController < ApplicationController
+  #force_ssl except: [:binding, :auth] unless Rails.env.development?
+  force_ssl unless Rails.env.development?
   #before_action :validate_token, only: [:show, :edit, :update, :destroy]
   before_action :validate_token
   def update_logs

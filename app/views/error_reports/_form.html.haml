@@ -1,0 +1,26 @@
+= form_for @error_report do |f|
+  - if @error_report.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@error_report.errors.count, "error")} prohibited this error_report from being saved:"
+      %ul
+        - @error_report.errors.full_messages.each do |msg|
+          %li= msg
+
+  -#.form-group
+    -#= f.label t("event.name")
+    -#= f.text_field :name, class: 'form-control', placeholder: t('event.name')
+
+  .form-group
+    = f.label :version
+    = f.text_field :version, class: 'form-control'
+  .form-group
+    = f.label :error_message
+    = f.text_area :error_message, class: 'form-control'
+  .form-group
+    = f.label :closed
+    = f.check_box :closed, class: 'form-control'
+  .form-group
+    = f.label :note
+    = f.text_area :note, class: 'form-control'
+  .actions
+    = f.submit 'Save'

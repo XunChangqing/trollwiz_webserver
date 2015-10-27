@@ -1,0 +1,7 @@
+%p#notice= notice
+%p
+  %strong Domain name:
+  = @black_domain_name.domain_name
+= link_to 'Edit', edit_black_domain_name_path(@black_domain_name)
+|
+= link_to 'Back', black_domain_names_path

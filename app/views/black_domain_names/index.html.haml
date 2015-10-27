@@ -1,0 +1,16 @@
+%p#notice= notice
+%h1 Listing Black Domain Names
+%table.table
+  %thead
+    %tr
+      %th Domain name
+      %th{:colspan => "3"}
+  %tbody
+    - @black_domain_names.each do |black_domain_name|
+      %tr
+        %td= black_domain_name.domain_name
+        %td= link_to 'Show', black_domain_name
+        %td= link_to 'Edit', edit_black_domain_name_path(black_domain_name)
+        %td= link_to 'Destroy', black_domain_name, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Black domain name', new_black_domain_name_path

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Version:
+  = @error_report.version
+%p
+  %b Error message:
+  = @error_report.error_message
+%p
+  %b Closed:
+  = @error_report.closed
+%p
+  %b Note:
+  = @error_report.note
+
+= link_to 'Edit', edit_error_report_path(@error_report)
+\|
+= link_to 'Back', error_reports_path

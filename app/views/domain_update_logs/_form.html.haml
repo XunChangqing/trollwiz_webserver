@@ -1,0 +1,17 @@
+= form_for(@domain_update_log) do |f|
+  - if @domain_update_log.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@domain_update_log.errors.count, "error")
+        prohibited this domain_update_log from being saved:
+      %ul
+        - @domain_update_log.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :operation
+    = f.number_field :operation, class: 'form-control'
+  .field
+    = f.label :domain_name
+    = f.text_field :domain_name, class: 'form-control'
+  .actions
+    = f.submit

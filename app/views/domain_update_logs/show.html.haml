@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Operation:
+  = @domain_update_log.operation
+%p
+  %strong Domain name:
+  = @domain_update_log.domain_name
+= link_to 'Edit', edit_domain_update_log_path(@domain_update_log)
+|
+= link_to 'Back', domain_update_logs_path

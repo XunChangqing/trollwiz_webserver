@@ -1,0 +1,29 @@
+%h1 Listing error_reports
+
+%table.table
+  %thead
+    %tr
+      %th Version
+      %th Error message
+      %th Closed
+      %th Note
+      %th time
+      %th
+      %th
+      %th
+
+  %tbody
+    - @error_reports.each do |error_report|
+      %tr
+        %td= error_report.version
+        %td= error_report.error_message
+        %td= error_report.closed
+        %td= error_report.note
+        %td= l error_report.created_at
+        %td= link_to 'Show', error_report
+        %td= link_to 'Edit', edit_error_report_path(error_report)
+        %td= link_to 'Destroy', error_report, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Error report', new_error_report_path
