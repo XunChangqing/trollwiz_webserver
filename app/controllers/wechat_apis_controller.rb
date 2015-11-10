@@ -6,8 +6,13 @@ class WechatApisController < ApplicationController
   #layout 'first_price_bargain_internal', only: [:index_joiners, :index_voters]
   layout 'wechat_apis'
   def jssdk_sign_package
-      sign_package = $trollwiz_wechat_client.get_jssign_package(params[:url]) 
+    sign_package = $trollwiz_wechat_client.get_jssign_package(params[:url]) 
+    sign_package['rawString'] = nil
+    if params[:callback]
+      render json: sign_package.to_json, callback: params[:callback]
+    else
       render json: sign_package
+    end
   end
   def access_token
     #render json: {access_token: Wechat.api.access_token.token}
