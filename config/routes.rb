@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'domain_names/submit_tmp_domain_name'
 
   #wechat apis
+  post 'wechat_apis/jssdk_sign_package'
   post 'wechat_apis/access_token'
   post 'wechat_apis/create_scene'
   post 'wechat_apis/scene_info'
