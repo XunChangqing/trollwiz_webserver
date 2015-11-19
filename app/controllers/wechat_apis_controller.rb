@@ -16,7 +16,7 @@ class WechatApisController < ApplicationController
   end
   def access_token
     #render json: {access_token: Wechat.api.access_token.token}
-    render json: {access_token: $trollwiz_wechat_client.access_token}
+    render json: {access_token: $trollwiz_wechat_client.get_access_token}
   end
   def create_scene
     @wechat_scene = WechatScene.new
