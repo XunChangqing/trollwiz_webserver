@@ -1,6 +1,6 @@
 class WechatApisController < ApplicationController
   force_ssl except: [:binding, :auth, :jssdk_sign_package] unless Rails.env.development?
-  before_action :validate_wechat_client, except: [:error_report]
+  #before_action :validate_wechat_client, except: [:error_report]
   before_action :validate_token, except: [:binding, :auth, :jssdk_sign_package]
   #layout 'first_price_bargain', except: [:index_joiners, :index_voters]
   #layout 'first_price_bargain_internal', only: [:index_joiners, :index_voters]
@@ -101,7 +101,7 @@ def validate_token
   end
 end
 
-def validate_wechat_client
-  $trollwiz_wechat_client.is_valid?
-end
+#def validate_wechat_client
+  #$trollwiz_wechat_client.is_valid?
+#end
 end
