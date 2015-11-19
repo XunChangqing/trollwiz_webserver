@@ -7,7 +7,7 @@ class WechatApisController < ApplicationController
   layout 'wechat_apis'
   def jssdk_sign_package
     sign_package = $trollwiz_wechat_client.get_jssign_package(params[:url]) 
-    sign_package['rawString'] = nil
+    #sign_package['rawString'] = nil
     if params[:callback]
       render json: sign_package.to_json, callback: params[:callback]
     else

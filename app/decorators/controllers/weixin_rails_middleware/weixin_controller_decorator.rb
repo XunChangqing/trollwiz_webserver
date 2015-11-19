@@ -100,6 +100,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
           reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
         end
       rescue => err
+        Rails.logger.error err
         reply_text_message("扫码失败")
       end
       #reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
