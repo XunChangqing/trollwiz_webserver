@@ -6,6 +6,7 @@ class WechatApisController < ApplicationController
   #layout 'first_price_bargain_internal', only: [:index_joiners, :index_voters]
   layout 'wechat_apis'
   def jssdk_sign_package
+    Rails.logger.info 'jsticket: '+$trollwiz_wechat_client.get_jsticket
     sign_package = $trollwiz_wechat_client.get_jssign_package(params[:url]) 
     #sign_package['rawString'] = nil
     if params[:callback]
@@ -16,7 +17,9 @@ class WechatApisController < ApplicationController
   end
   def access_token
     #render json: {access_token: Wechat.api.access_token.token}
-    render json: {access_token: $trollwiz_wechat_client.get_access_token}
+    access_token = $trollwiz_wechat_client.get_access_token
+    Rails.logger.info 'access token: '+access_token
+    render json: {access_token: access_token}
   end
   def create_scene
     @wechat_scene = WechatScene.new
