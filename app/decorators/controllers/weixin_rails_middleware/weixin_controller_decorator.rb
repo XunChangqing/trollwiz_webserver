@@ -74,7 +74,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         #return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
         # 去掉关键字前面的qrscene_，这个前缀只有是关注时才会有
-        @sceneid = @keyworkd.match(/qrscene_(.*)/i)[1].to_i
+        @sceneid = @keyword.match(/qrscene_(.*)/i)[1].to_i
         return handle_scan_event
       end
       reply_text_message("关注公众账号")
