@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Openid:
+  = @wechat_user.openid
+%p
+  %b Nickname:
+  = @wechat_user.nickname
+%p
+  %b Headimgurl:
+  = @wechat_user.headimgurl
+
+= link_to 'Edit', edit_wechat_user_path(@wechat_user)
+\|
+= link_to 'Back', wechat_users_path

@@ -1,0 +1,19 @@
+= form_for @wechat_user do |f|
+  - if @wechat_user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@wechat_user.errors.count, "error")} prohibited this wechat_user from being saved:"
+      %ul
+        - @wechat_user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :openid
+    = f.text_field :openid, class: 'form-control'
+  .form-group
+    = f.label :nickname
+    = f.text_field :nickname, class: 'form-control'
+  .form-group
+    = f.label :headimgurl
+    = f.text_field :headimgurl, class: 'form-control'
+  .actions
+    = f.submit 'Save'

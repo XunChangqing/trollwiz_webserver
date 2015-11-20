@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :white_domain_names
     resources :tmp_domain_names
     resources :domain_update_logs
+    resources :wechat_users
     resources :error_reports
     end
   # The priority is based upon order of creation: first created -> highest priority.
