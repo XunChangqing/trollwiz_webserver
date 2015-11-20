@@ -72,8 +72,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def handle_subscribe_event
       if @keyword.present?
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
-        #return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
-        return handle_scan_event
+        return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
+        #return handle_scan_event
       end
       reply_text_message("关注公众账号")
     end
@@ -85,25 +85,25 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     # 扫描带参数二维码事件: 2. 用户已关注时的事件推送
     def handle_scan_event
-      begin
-        Rails.logger.info "**************"
-        Rails.logger.info @weixin_message.FromUserName
-        #sceneid = @keyworkd.match(/qrscene_(.*)/i)[1].to_i
-        sceneid = @keyword.to_i
-        @wechat_scene = WechatScene.find_by_id(sceneid)
-        @wechat_scene.openid = @weixin_message.FromUserName
-        @wechat_scene.save
-        @user = WechatUser.find_by_openid @weixin_message.FromUserName
-        if @user != nil and @user.openid != ''
-          reply_text_message("绑定成功!")
-        else
-          reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
-        end
-      rescue => err
-        Rails.logger.error err
-        reply_text_message("扫码失败")
-      end
-      #reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
+      #begin
+        #Rails.logger.info "**************"
+        #Rails.logger.info @weixin_message.FromUserName
+        ##sceneid = @keyworkd.match(/qrscene_(.*)/i)[1].to_i
+        #sceneid = @keyword.to_i
+        #@wechat_scene = WechatScene.find_by_id(sceneid)
+        #@wechat_scene.openid = @weixin_message.FromUserName
+        #@wechat_scene.save
+        #@user = WechatUser.find_by_openid @weixin_message.FromUserName
+        #if @user != nil and @user.openid != ''
+          #reply_text_message("绑定成功!")
+        #else
+          #reply_text_message("扫码成功, 请点击公众号的绑定按钮完成绑定！")
+        #end
+      #rescue => err
+        #Rails.logger.error err
+        #reply_text_message("微信服务器没有提供足够信息，请您再次扫描二维码，带来的不便敬请谅解！")
+      #end
+      reply_text_message("扫描带参数二维码事件: 2. 用户已关注时的事件推送, keyword: #{@keyword}")
     end
 
     def handle_location_event # 上报地理位置事件
