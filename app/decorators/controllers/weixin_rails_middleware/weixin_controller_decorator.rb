@@ -91,7 +91,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         # 如果不是关注事件，则从关键字中直接提取场景id
         @sceneid ||= @keyword.to_i
         Rails.logger.info "Scan User Name: " + @weixin_message.FromUserName+" Scene ID: #{@sceneid}"
-        @wechat_scene = WechatScene.find_by_id(sceneid)
+        @wechat_scene = WechatScene.find_by_id(@sceneid)
         @wechat_scene.openid = @weixin_message.FromUserName
         @wechat_scene.save
         @user = WechatUser.find_by_openid @weixin_message.FromUserName
