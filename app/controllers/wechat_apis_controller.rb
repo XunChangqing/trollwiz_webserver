@@ -16,7 +16,6 @@ class WechatApisController < ApplicationController
     end
   end
   def access_token
-    #render json: {access_token: Wechat.api.access_token.token}
     access_token = $trollwiz_wechat_client.get_access_token
     Rails.logger.info 'access token: '+access_token
     render json: {access_token: access_token}
@@ -24,8 +23,7 @@ class WechatApisController < ApplicationController
   def create_scene
     @wechat_scene = WechatScene.new
     @wechat_scene.save
-    #render json: {access_token: Wechat.api.access_token.token, scene_id: @wechat_scene.id}
-    render json: {access_token: $trollwiz_wechat_client.access_token, scene_id: @wechat_scene.id}
+    render json: {access_token: $trollwiz_wechat_client.get_access_token, scene_id: @wechat_scene.id}
   end
   def scene_info
     @wechat_scene = WechatScene.find_by_id params[:scene_id]
