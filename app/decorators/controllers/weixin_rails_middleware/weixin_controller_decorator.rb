@@ -147,4 +147,8 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("回调事件处理")
     end
 
+    def handle_templatesendjobfinish_event
+      Rails.logger.info("handle template send job finish event")
+    end
+
 end
