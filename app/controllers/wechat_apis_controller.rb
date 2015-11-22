@@ -31,7 +31,7 @@ class WechatApisController < ApplicationController
   end
 
   def get_user_info
-    @wechat_user = WechatUser.find_by_openid params[:openid]
+    @wechat_user = WechatUser.find_by_openid params[:openid] || WechatUser.new
     render json: @wechat_user
   end
   
