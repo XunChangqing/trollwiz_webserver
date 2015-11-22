@@ -38,9 +38,14 @@ class WechatApisController < ApplicationController
   def get_auth_info
     @wechat_user = WechatUser.find_by_openid params[:openid]
     @auth_info = AuthInfo.find_by_wechat_user_id @wechat_user.id
-    render json: @auth_info
-    @auth_info.used = true
-    @auth_info.save
+    if not @auth_info.nil?
+      render json: @auth_info
+      @auth_info.used = true
+      @auth_info.save
+    else
+      //为了使得没有判断返回字串为null的版本也可以正常运行，返回空值
+      render json: AuthInfo.new
+    end
   end
 
   def binding
