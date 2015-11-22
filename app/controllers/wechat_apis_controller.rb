@@ -44,7 +44,10 @@ class WechatApisController < ApplicationController
       @auth_info.save
     else
       #为了使得没有判断返回字串为null的版本也可以正常运行，返回空值
-      render json: AuthInfo.new
+      retinfo = AuthInfo.new
+      #防止程序解析出错
+      retinfo.used = true
+      render json: retinfo
     end
   end
 
