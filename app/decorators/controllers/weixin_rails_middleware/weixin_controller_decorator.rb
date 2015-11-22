@@ -149,6 +149,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def handle_templatesendjobfinish_event
       Rails.logger.info("handle template send job finish event")
+      reply_text_message("template message has been sent")
     end
 
 end
