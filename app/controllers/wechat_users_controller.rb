@@ -4,7 +4,7 @@ class WechatUsersController < ApplicationController
   # GET /wechat_users
   # GET /wechat_users.json
   def index
-    @wechat_users = WechatUser.all
+    @wechat_users = WechatUser.all.order(updated_at: :desc)
   end
 
   # GET /wechat_users/1

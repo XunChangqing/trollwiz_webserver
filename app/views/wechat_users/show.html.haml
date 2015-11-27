@@ -9,6 +9,9 @@
 %p
   %b Headimgurl:
   = @wechat_user.headimgurl
+%p
+  %b updated_at:
+  = l @wechat_user.updated_at
 
 = link_to 'Edit', edit_wechat_user_path(@wechat_user)
 \|
