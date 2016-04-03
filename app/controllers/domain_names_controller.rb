@@ -21,6 +21,16 @@ class DomainNamesController < ApplicationController
       render json: {"error":"already exist"}
     end
   end
+
+  def submit_start_register
+    @start_register = StartRegister.new(params.permit(:user_id, :note))
+
+    if @start_register.save
+      render json: @start_register
+    else
+      render json: {"error":"cannot register"}
+    end
+  end
 end
 
 

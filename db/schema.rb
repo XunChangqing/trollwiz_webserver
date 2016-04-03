@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013031707) do
+ActiveRecord::Schema.define(version: 20160403024635) do
 
   create_table "auth_infos", force: :cascade do |t|
     t.integer  "wechat_user_id"
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(version: 20151013031707) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "start_registers", force: :cascade do |t|
+    t.string   "user_id"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "start_registers", ["user_id"], name: "index_start_registers_on_user_id"
+
+  create_table "super_white_domain_names", force: :cascade do |t|
+    t.string   "domain_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "super_white_domain_names", ["domain_name"], name: "index_super_white_domain_names_on_domain_name", unique: true
 
   create_table "tmp_domain_names", force: :cascade do |t|
     t.string   "domain_name"

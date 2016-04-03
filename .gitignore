@@ -22,3 +22,5 @@ config/trollwiz.yml
 !/log/.keep
 log/*
 /tmp
+
+dump.rdb
