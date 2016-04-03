@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @start_register.user_id
+%p
+  %b Note:
+  = @start_register.note
+
+= link_to 'Edit', edit_start_register_path(@start_register)
+\|
+= link_to 'Back', start_registers_path

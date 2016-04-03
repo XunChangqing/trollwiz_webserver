@@ -1,0 +1,2 @@
+module SuperWhiteDomainNamesHelper
+end

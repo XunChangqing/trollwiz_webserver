@@ -1,0 +1,23 @@
+%h1 Listing start_registers
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th User
+      %th Note
+      %th CreatedAt
+      %th{:colspan => "3"}
+
+  %tbody
+    - @start_registers.each do |start_register|
+      %tr
+        %td= start_register.user_id
+        %td= start_register.note
+        %td= l start_register.created_at
+        %td= link_to 'Show', start_register
+        %td= link_to 'Edit', edit_start_register_path(start_register)
+        %td= link_to 'Destroy', start_register, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Start register', new_start_register_path

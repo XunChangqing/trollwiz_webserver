@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :start_registers
-  resources :super_white_domain_names
   mount WeixinRailsMiddleware::Engine, at: "/"
   #domain_name apis
   post 'domain_names/update_logs'
@@ -24,8 +22,8 @@ Rails.application.routes.draw do
   scope "/admin" do
     resources :black_domain_names
     resources :white_domain_names
-    resources :super_white_domain_names
     resources :start_registers
+    resources :super_white_domain_names
     resources :tmp_domain_names
     resources :domain_update_logs
     resources :wechat_users

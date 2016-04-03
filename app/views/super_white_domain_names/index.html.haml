@@ -1,0 +1,19 @@
+%h1 Listing super_white_domain_names
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th Domain name
+      %th{:colspan => "3"}
+
+  %tbody
+    - @super_white_domain_names.each do |super_white_domain_name|
+      %tr
+        %td= super_white_domain_name.domain_name
+        %td= link_to 'Show', super_white_domain_name
+        %td= link_to 'Edit', edit_super_white_domain_name_path(super_white_domain_name)
+        %td= link_to 'Destroy', super_white_domain_name, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Super white domain name', new_super_white_domain_name_path

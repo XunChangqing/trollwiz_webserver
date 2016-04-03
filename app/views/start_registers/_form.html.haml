@@ -1,0 +1,16 @@
+= form_for @start_register do |f|
+  - if @start_register.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@start_register.errors.count, "error")} prohibited this start_register from being saved:"
+      %ul
+        - @start_register.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :user_id
+    = f.text_field :user_id
+  .form-group
+    = f.label :note
+    = f.text_area :note
+  .actions
+    = f.submit 'Save'
